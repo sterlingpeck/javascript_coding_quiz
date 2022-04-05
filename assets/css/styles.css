@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    background: #ededed;
+    color: var(--grey);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  } 
+  
+.high-score {
+    float: left;
+    left: 0px;
+    width: 300px;
+    padding: 10px;
+  }
+  
+.clock {
+    float: right;
+    right: 0px;
+    width: 300px;
+    padding: 10px;
+  }
+
+.page-title {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+
+}
+
+.page-content {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+
+}
+
+.start-btn {
+    margin: auto;
+    padding: 10px;
+    position: absolute;
+}
+
