@@ -13,17 +13,40 @@
             <p class="high-score">View High Scores</p>
         </div>
         <div>
-            <p class="clock">Time: 0</p>
+            <p class="timeleft">Time Left</p>
         </div>  
     </header>
 
 <section>
-    <h1 class="page-title">Coding Quiz Challenge</h1>
-    <p class="page-con">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-    <div>
-        <button class="start-btn">Start Quiz</button>
-    </div> 
-</section> 
+    <div id="content-container">
+        <h1 class="page-title">Coding Quiz Challenge</h1>
+        <p class="instructions">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        <button id="start-btn" class="start-btn-container">Start Quiz</button>
+    </div>   
 
+    <div class="quiz-container">
+        <div id="question-container" class="hide">
+            <div id="question">Question</div>
+                <div id="answer-buttons" class="btn-container">
+                    <button class="btn">Answer 1</button>
+                    <button class="btn">Answer 2</button>
+                    <button class="btn">Answer 3</button>
+                    <button class="btn">Answer 4</button>
+                </div>
+            </div>
+        </div> 
+    </div>        
+</section>
+
+<div id="results" class="hide">
+    <p>You've completed the quiz!</p>
+    <p>Your score is: <p class="score"></p>
+    <button>Save Score</button>
+</div>
+<div>
+    <input class="hide"></input>
+</div>
+
+<script src="./assets/js/script.js"></script>
 </body>
 </html>
