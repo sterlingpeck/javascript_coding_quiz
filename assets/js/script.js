@@ -8,10 +8,18 @@ const answerButtonsElement = document.getElementById('buttons')
 var timerEl = document.querySelector('.timeleft');
 const incrementEl = document.querySelector('.score')
 const decrementEl = document.querySelector('.score')
-
+const answer1 = document.querySelector('.answer1')
+const answer2 = document.querySelector('.answer2')
+const answer3 = document.querySelector('.answer3')
+const answer4 = document.querySelector('.answer4')
+var currentStep = 0
 
 
 startButton.addEventListener('click', startQuiz)
+answer1.addEventListener('click', confirmAnswer.bind(this, 'a'))
+answer2.addEventListener('click', confirmAnswer.bind(this, 'b'))
+answer3.addEventListener('click', confirmAnswer.bind(this, 'c'))
+answer4.addEventListener('click', confirmAnswer.bind(this, 'd'))
 
 function startQuiz() {
     console.log('started')
@@ -24,53 +32,54 @@ function startQuiz() {
 }
 
 function setNextQuestion() {
-
+    answer1.textContent = questions[currentStep].answers["a"]
+    answer2.textContent = questions[currentStep].answers["b"]
+    answer3.textContent = questions[currentStep].answers["c"]
+    answer4.textContent = questions[currentStep].answers["d"]
+    questionContainerElement.querySelector('#question').textContent = questions[currentStep].question
 }
 
 
-function selectAnswer() {
+function confirmAnswer(answer) {
+    if (typeof questions[currentStep+1] === 'undefined') return
+    if (questions[currentStep].answers[answer] === questions[currentStep].correct) {
+      currentStep++a
+      setNextQuestion()
+    }
 }
 
 
 var questions = [
     {
         question: "What is 2 + 2?",
-        answers: [
-           { a: "4", correct: true },
-           { b: "10", correct: false },
-           { c: "9", correct: false },
-           { d: "41", correct: false },
-        ]
+        answers: {
+            a: "4",
+            b: "10",
+            c: "9",
+            d: "41",
+        },
+        correct: '4'
     },
 
     {
-        question: "What is 2 + 2?",
-        answers: [
-           { a: "4", correct: true },
-           { b: "10", correct: false },
-           { c: "9", correct: false },
-           { d: "41", correct: false },
-        ]
+        question: "What is thing",
+        answers: {
+            a: "69",
+            b: "420",
+            c: "butt",
+            d: "turds",
+        },
+        correct: '420'
     },
-
     {
-        question: "What is 2 + 2?",
-        answers: [
-           { a: "4", correct: true },
-           { b: "10", correct: false },
-           { c: "9", correct: false },
-           { d: "41", correct: false },
-        ]
-    },
-
-    {
-        question: "What is 2 + 2?",
-        answers: [
-           { a: "4", correct: true },
-           { b: "10", correct: false },
-           { c: "9", correct: false },
-           { d: "41", correct: false },
-        ]
+        question: "What is huh?",
+        answers: {
+            a: "asfad",
+            b: "4adsfhjj",
+            c: "huh",
+            d: "noidea",
+        },
+        correct: 'huh'
     },
 ]
 
