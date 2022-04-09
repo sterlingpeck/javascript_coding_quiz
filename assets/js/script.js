@@ -5,7 +5,10 @@ const instructionsContainer = document.querySelector(".instructions")
 const titleContainer = document.querySelector(".page-title")
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('buttons')
-var timerEl = document.getElementById('#timeleft');
+var timerEl = document.querySelector('.timeleft');
+const incrementEl = document.querySelector('.score')
+const decrementEl = document.querySelector('.score')
+
 
 
 startButton.addEventListener('click', startQuiz)
@@ -21,6 +24,7 @@ function startQuiz() {
 }
 
 function setNextQuestion() {
+
 }
 
 
@@ -139,81 +143,6 @@ saveScore.addEventListener("click", function() {
 })
 
 
-
-// var startClock = setInterval(function() {
-
-    // document.getElementById("clock").innerHTML = minutes + "m " + seconds + "s ";
-
-    // if (distance < 0) {
-        // clearInterval(x);
-        // document.getElementById("clock").innerHTML = "Time's Up!"
-    // }
-
-// }, 1000);
-
-
-
-
-// function showQuestions(questions, questionContainerElement) {
-//     var output = []
-//     var answers;
-
-//     for(var i=0; i < questions.length; i++) {
-//         answers = [];
-//         output.push(
-//             '<div class="question"' + questions[i].question + '</div>'
-//             + '<div class="answers">' + answers.join('') + '</div>'
-//         );
-//     }
-
-//         quizContainer.innerHTML = output.join('');
-// }
-
-// showQuestions(questions, quizContainer);
-
-
-//     if(response === questions[i].answers.correct) {
-//         score++;
-//         alert("Correct!");
-//         } else {
-//         alert("wrong!");
-//     }
-
-
-
-
-// const questions = [
-    // {
-        // question: 'What is a',
-        // answers: ['a', 'b', 'c']
-    // }
-// ]
-// 
-
-
-// const questions = [
-//     { question: 'What is 2 + 2' }
-// ]
-
-// const answers = [ 'nud', '4' ]
-// answers[0]
-
-// if correctAnswer = true {
-    // nextQuestion
-// }
-
-// if (answers[0] === 'nud') { console.log('THAT is CORRECT') }
-
-
-
-
-
-
-// choices.addEventListener("mouseover", function(changeColor) {
-    // changeColor.target.style.color = purple
-
-    // document.getElementById("coices").addEventListener("click", changeColor);
-// }
 
 
 
