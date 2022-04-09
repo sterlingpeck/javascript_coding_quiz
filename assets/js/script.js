@@ -1,5 +1,6 @@
 const startButton = document.getElementById('start-btn')
 const nextButton = document.getElementById('next-btn')
+const clockContainerEl = document.querySelector('.timeleft')
 const questionContainerElement = document.getElementById('question-container')
 const instructionsContainer = document.querySelector(".instructions")
 const titleContainer = document.querySelector(".page-title")
@@ -12,7 +13,11 @@ const answer1 = document.querySelector('.answer1')
 const answer2 = document.querySelector('.answer2')
 const answer3 = document.querySelector('.answer3')
 const answer4 = document.querySelector('.answer4')
+const saveScoreEl = document.querySelector('.savescore')
 var currentStep = 0
+var score = 0;
+var timeLeft = 45;
+const resultsContainer = document.querySelector('#results')
 
 
 startButton.addEventListener('click', startQuiz)
@@ -41,10 +46,21 @@ function setNextQuestion() {
 
 
 function confirmAnswer(answer) {
+    if (questions.length === currentStep+1) {
+        endQuiz()
+    }
     if (typeof questions[currentStep+1] === 'undefined') return
     if (questions[currentStep].answers[answer] === questions[currentStep].correct) {
-      currentStep++a
-      setNextQuestion()
+      currentStep++
+      setNextQuestion() 
+      score++;
+      setScoreText();
+     } else { 
+         setNextQuestion()
+         score--;
+         setScoreText();
+         timeLeft-=10;
+
     }
 }
 
@@ -65,26 +81,35 @@ var questions = [
         question: "What is thing",
         answers: {
             a: "69",
-            b: "420",
-            c: "butt",
-            d: "turds",
+            b: "thing",
+            c: "notthing",
+            d: "something?",
         },
-        correct: '420'
+        correct: 'thing'
     },
     {
-        question: "What is huh?",
+        question: "What is orange",
         answers: {
-            a: "asfad",
-            b: "4adsfhjj",
-            c: "huh",
+            a: "orange",
+            b: "yellow",
+            c: "red",
             d: "noidea",
         },
-        correct: 'huh'
+        correct: 'orange'
+    },
+    {
+        question: "What is apple?",
+        answers: {
+            a: "orange",
+            b: "banana",
+            c: "yellow",
+            d: "apple",
+        },
+        correct: 'apple'
     },
 ]
 
 function countdown() {
-    var timeLeft = 45;
   
     var timeInterval = setInterval(function () {
       // As long as the `timeLeft` is greater than 1
@@ -98,6 +123,7 @@ function countdown() {
         timerEl.textContent = timeLeft + ' second remaining';
         timeLeft--;
       } else {
+        endQuiz()
         // Once `timeLeft` gets to 0, set `timerEl` to an empty string
         timerEl.textContent = '';
         // Use `clearInterval()` to stop the timer
@@ -109,46 +135,28 @@ function countdown() {
   }
 
 
-  var score = 0;
-  var incrementScore = document.querySelector("score");
-  
-  function setScoreText() {
-      scoreEl.textContent = score;
-    }
-  
-    incrementEl.addEventListener("click", function() {
-      score++;
-      setScoreText();
-    });  
-  
-    decrementEl.addEventListener("click", function() {
-  if (answer = false) {
-        score--;
-        setScoreText();
-      }
-    });    
-  
+  function endQuiz () {
+    resultsContainer.classList.remove('hide')
+    questionContainerElement.classList.add('hide')
+    clockContainerEl.classList.add('hide')
+    
+  }
 
+
+function setScoreText() {
+    document.querySelector('.score').textContent=score
+}
 
 // High score local storage
 var saveScore = function() {
 localStorage.setItem("score", JSON.stringify(score));
  }
 
-saveScore.addEventListener("click", function() {
+saveScoreEl.addEventListener("click", function() {
     var initials = document.querySelector(".initials").value
+    localStorage.setItem("initials", JSON.stringify(initials));
+    localStorage.setItem("score", JSON.stringify(score))
 
-    var newScore = {
-        initials: initials,
-        score
-    }
-
-    function populateStorage() {
-        localStorage.setItem("initials", JSON.stringify(initials));
-        localStorage.setItem("score", JSON.stringify(score))
-    }
-
-    populateStorage(newScore);
 })
 
 
