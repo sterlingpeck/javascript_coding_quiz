@@ -6,9 +6,8 @@ const instructionsContainer = document.querySelector(".instructions")
 const titleContainer = document.querySelector(".page-title")
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('buttons')
+const highScoreEl = document.querySelector(".high-score")
 var timerEl = document.querySelector('.timeleft');
-const incrementEl = document.querySelector('.score')
-const decrementEl = document.querySelector('.score')
 const answer1 = document.querySelector('.answer1')
 const answer2 = document.querySelector('.answer2')
 const answer3 = document.querySelector('.answer3')
@@ -27,7 +26,6 @@ answer3.addEventListener('click', confirmAnswer.bind(this, 'c'))
 answer4.addEventListener('click', confirmAnswer.bind(this, 'd'))
 
 function startQuiz() {
-    console.log('started')
     startButton.classList.add('hide')
     instructionsContainer.classList.add('hide')
     titleContainer.classList.add('hide')
@@ -44,68 +42,91 @@ function setNextQuestion() {
     questionContainerElement.querySelector('#question').textContent = questions[currentStep].question
 }
 
+const isCorrect = (currentStep, answer) => questions[currentStep].answers[answer] === questions[currentStep].correct
 
 function confirmAnswer(answer) {
+  
     if (questions.length === currentStep+1) {
         endQuiz()
     }
-    if (typeof questions[currentStep+1] === 'undefined') return
-    if (questions[currentStep].answers[answer] === questions[currentStep].correct) {
+    if (typeof questions[currentStep+1] === 'undefined') {
+      if (isCorrect(currentStep, answer)) score++
+
+      return
+    }
+    if (isCorrect(currentStep, answer)) {
       currentStep++
       setNextQuestion() 
       score++;
       setScoreText();
      } else { 
+         currentStep++
          setNextQuestion()
-         score--;
          setScoreText();
          timeLeft-=10;
-
     }
 }
 
-
 var questions = [
     {
-        question: "What is 2 + 2?",
+        question: "Inside which HTML element do we put the JavaScript?",
         answers: {
-            a: "4",
-            b: "10",
-            c: "9",
-            d: "41",
+            a: "<javascript>",
+            b: "<js>",
+            c: "<scripting>",
+            d: "<script>",
         },
-        correct: '4'
-    },
-
-    {
-        question: "What is thing",
-        answers: {
-            a: "69",
-            b: "thing",
-            c: "notthing",
-            d: "something?",
-        },
-        correct: 'thing'
+        correct: '<script>'
     },
     {
-        question: "What is orange",
+        question: "How do you write 'Hello World' in an alert box?",
         answers: {
-            a: "orange",
-            b: "yellow",
-            c: "red",
-            d: "noidea",
+            a: "alert('Hello World';)",
+            b: "msgBox('Hello World';)",
+            c: "msg('Hello World';)",
+            d: "alertBox('Hello World';)",
         },
-        correct: 'orange'
+        correct: "alert('Hello World';)"
     },
     {
-        question: "What is apple?",
+        question: "How do you create a function in JavaScript?",
         answers: {
-            a: "orange",
-            b: "banana",
-            c: "yellow",
-            d: "apple",
+            a: "myFunction()",
+            b: "function:myFunction()",
+            c: "function myFunction()",
+            d: "function = myFunction()",
         },
-        correct: 'apple'
+        correct: 'function myFunction()'
+    },
+    {
+        question: "How does a FOR loop start?",
+        answers: {
+            a: "for(i=0; i <= 5; i++)",
+            b: "for (i <= 5; i++)",
+            c: "for (i = 0; i <= 5)",
+            d: "fir i = 1 to 5",
+        },
+        correct: 'for(i=0; i <=5; i++)'
+    },
+    {
+        question: "How can you add a comment in a JavaScript?",
+        answers: {
+            a: "//This is a comment",
+            b: "<!--This is a comment--!>",
+            c: "'This is a comment",
+            d: "--This is a comment--",
+        },
+        correct: '//This is a comment'
+    },
+    {
+        question: "What is the correct way to write a JavaScript array?",
+        answers: {
+            a: "var colors = 'red','green','blue'",
+            b: "var color = 1 = ('red'),2=('green'),3=('blue')",
+            c: "var color = (1:'red', 2:'green',3:'blue'",
+            d: "var color = ['red','green','blue']",
+        },
+        correct: "var color = ['red','green','blue']"
     },
 ]
 
@@ -129,19 +150,15 @@ function countdown() {
         // Use `clearInterval()` to stop the timer
         clearInterval(timeInterval);
         // Call the `displayMessage()` function
-        displayMessage();
       }
     }, 1000);
   }
-
 
   function endQuiz () {
     resultsContainer.classList.remove('hide')
     questionContainerElement.classList.add('hide')
     clockContainerEl.classList.add('hide')
-    
   }
-
 
 function setScoreText() {
     document.querySelector('.score').textContent=score
@@ -149,17 +166,16 @@ function setScoreText() {
 
 // High score local storage
 var saveScore = function() {
-localStorage.setItem("score", JSON.stringify(score));
- }
+    localStorage.setItem("score", JSON.stringify(score));
+}
 
 saveScoreEl.addEventListener("click", function() {
-    var initials = document.querySelector(".initials").value
-    localStorage.setItem("initials", JSON.stringify(initials));
-    localStorage.setItem("score", JSON.stringify(score))
-
+    const initials = document.querySelector(".initials").value
+    localStorage.setItem(initials, JSON.stringify(score))
 })
 
+function getScores() {
+    const scores = JSON.parse(localStorage.getItem("highScores"))
 
-
-
+}
 
