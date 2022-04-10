@@ -32,6 +32,7 @@ function startQuiz() {
     questionContainerElement.classList.remove('hide')
     countdown()
     setNextQuestion()
+    getScore()
 }
 
 function setNextQuestion() {
@@ -158,6 +159,7 @@ function countdown() {
     resultsContainer.classList.remove('hide')
     questionContainerElement.classList.add('hide')
     clockContainerEl.classList.add('hide')
+    getScore()
   }
 
 function setScoreText() {
@@ -171,11 +173,10 @@ var saveScore = function() {
 
 saveScoreEl.addEventListener("click", function() {
     const initials = document.querySelector(".initials").value
-    localStorage.setItem(initials, JSON.stringify(score))
+    localStorage.setItem("score", JSON.stringify({ initials, score }))
 })
 
-function getScores() {
-    const scores = JSON.parse(localStorage.getItem("highScores"))
-
+function getScore() {
+    const lsScore = JSON.parse(localStorage.getItem("score"))
+    highScoreEl.textContent = lsScore.score
 }
-
