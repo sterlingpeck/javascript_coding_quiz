@@ -17,26 +17,51 @@ body {
 .container1 {
     width: 800px;
     max-width: 80%;
-    background-color: white;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px 2em;
+    text-align: center;
+
 }
 
 header {
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 150px;
     max-width: 80%;
-    background-color: white;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    justify-content: space-evenly;
+}
+
+.high-score {
+    width: 150px;
+    height: 150px;
+    max-width: 80%;
+    border-radius: 5px;
+    padding: 25px;
+    margin: 50px;
+    box-shadow: 0 0 10px 2px;
+    display: flex;
+    align-items: center;
+
+}
+
+.timeleft {
+    width: 150px;
+    height: 150px;
+    max-width: 80%;
+    border-radius: 5px;
+    padding: 25px;
+    margin: 50px;
+    box-shadow: 0 0 10px 2px;
+    display: flex;
+    text-align: center;
+    align-content: space-around;
 }
 
 header p .high-score {
@@ -48,8 +73,6 @@ header p .high-score {
     padding: 10px;
     box-shadow: 0 0 10px 2px;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
 }
 
 .btn-container {
