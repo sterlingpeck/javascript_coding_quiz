@@ -10,15 +10,18 @@
 <body>
     <header>
         <div>
-            <p>View High Scores</p>
+            <p>High Score</p>
             <div class="high-score"></div>
         </div>
         <div>
             <p class="timeleft"></p>
         </div>  
     </header>
+<br>
+<br>
+<br>
 
-<section>
+<section class="container1">
     <div id="content-container">
         <h1 class="page-title">Coding Quiz Challenge</h1>
         <p class="instructions">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
@@ -37,18 +40,19 @@
             </div>
         </div> 
     </div>        
-</section>
+
 
 <div id="results" class="hide">
     <p>You've completed the quiz!</p>
     <p>Your score is: <p class="score"></p>
-    <input class="initials">Initials</input>
+    <p>Enter your initials in the box below to save your score</p>
+    <input class="initials"></input>
     <button class="savescore">Save Score</button>
 </div>
 <div>
     <input class="hide"></input>
 </div>
-
+</section>
 <script src="./assets/js/script.js"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@ const answer4 = document.querySelector('.answer4')
 const saveScoreEl = document.querySelector('.savescore')
 var currentStep = 0
 var score = 0;
-var timeLeft = 45;
+var timeLeft = 120;
 const resultsContainer = document.querySelector('#results')
 
 

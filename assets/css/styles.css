@@ -1,71 +1,77 @@
 * {
     box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: white;
   }
 
 body {
-    text-align: center;
+    padding: 0;
+    margin: 0;
     display: flex;
-    padding: 350px;
     justify-content: center;
     align-items: center;
-  }
-
-.high-score {
-    display: flex;
-    justify-content: left;
-    align-items: flex-start;
-
+    width: 100vw;
+    height: 100vh;
 }
-.time-left {
-    display: flex;
-    justify-content: flex-end;
-}
-.clock {
-    display: flex;
-    justify-content: flex-end;
-}
-  
- /* .quiz-container { */
-    /* width: 800px; */
-    /* max-width: 80%; */
-    /* border-radius: 5px; */
-    /* padding: 10px; */
-    /* box-shadow: 0 0 10px 2px; */
- /* } */
 
- .btn-container {
-    display: list-item;
+.container1 {
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px 2em;
+}
+
+header {
+    width: 250px;
+    height: 250px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+header p .high-score {
+    width: 250px;
+    height: 250px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
     gap: 10px;
     margin: 20px 0;
- }
+}
 
- .btn {
+
+ .btn, .start-btn-container {
      background-color: blueviolet;
      border: 1px solid;
      border-radius: 5px;
      padding: 5px 10px;
      outline: none;
+     color: white;
  }
 
  .btn:hover {
-     border-color: purple;
+     background-color: purple;
  }
-
- /* .btn.correct { */
-
-
-
- /* .btn.wrong { */
-
-
- .start-btn-container {
-     font-size: 1.5rem;
-     font-weight: bold;
-     padding: 10px 20px;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-}
 
 .hide {
     display: none;
